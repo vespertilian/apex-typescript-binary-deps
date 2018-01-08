@@ -9,9 +9,14 @@
   "author": "Cameron Batt",
   "license": "MIT",
   "devDependencies": {
-    "@types/aws-lambda": "0.0.26"
+    "@types/aws-lambda": "0.0.26",
+    "@types/node": "^8.5.7",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
   },
   "dependencies": {
+    "axios": "^0.17.1",
+    "lodash": "^4.17.4",
     "lodash.uppercase": "^4.3.0"
   }
 }
