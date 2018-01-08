@@ -1,0 +1,14 @@
+{
+  "name": "apex-typescript-binary-deps",
+  "description": "Example repository with typescript and binary dependencies",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::150466764825:role/apex-typescript-binary-deps_lambda_function",
+  "environment": {},
+  "runtime": "nodejs6.10",
+  "handler": "index.default",
+  "hooks": {
+    "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js",
+    "clean": "rm -fr lib"
+  }
+}

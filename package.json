@@ -1,0 +1,17 @@
+{
+  "name": "apex-deps-test",
+  "version": "1.0.0",
+  "description": "A test of loading apex with node modules that have external dependencies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cameron Batt",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/aws-lambda": "0.0.26"
+  },
+  "dependencies": {
+    "lodash.uppercase": "^4.3.0"
+  }
+}
