@@ -3,7 +3,7 @@ import { Context } from 'aws-lambda';
 
 export default async function(e: any, ctx: Context) {
 
-    let urls: string[] = ['http://cameronbatt.com'];
+    let urls: string[] = ['http://google.com'];
     if(Array.isArray(e.urls)) {
         urls = e.urls
     }
