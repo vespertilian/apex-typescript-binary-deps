@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "build": "tsc -p tsconfig.json && cd lib && npm init -y && npm install bcrypt --save --target=6.1.0 --target_arch=x64 --target_platform=linux --target_libc=glibc",
+    "clean": "rm -fr lib"
+  }
+}
