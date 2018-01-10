@@ -12,6 +12,8 @@ These functions are built with webpack which will bundle all all the dependencie
 
 As bcrypt relies on a c binary we need to bundle it with it's node modules. The `function.json` and `tsconfig.json` files inside the bcrypt function folder are used to override the default webpack bundle used for the other functions which don't have binary files.
 
+Build command override in `functions\bcrypt\function.json`:
+
 ```
 ../../node_modules/typescript/bin/tsc -p tsconfig.json && cd lib && npm init -y && npm install bcrypt --save --target=6.1.0 --target_arch=x64 --target_platform=linux --target_libc=glibc
 ```
