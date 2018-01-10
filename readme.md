@@ -1,8 +1,27 @@
+## Example of a complex typescript build for when using Apex to deploy lambda functions.
+
+### Overview of build architecture
+
+- *axios*
+- *hello-one*
+- *lodash-upper*
+
+These functions are built with webpack which will bundle all all the dependencies into a single file. The webpack build hook is set in the `project-stub.json` file. See webpack.config.js for webpack settings.
+
+- *bcrypt*
+
+As bcrypt relies on a c binary we need to bundle it with it's node modules. The `function.json` and `tsconfig.json` files inside the bcrypt function folder are used to override the default webpack bundle used for the other simpler functions.
+
+```
+../../node_modules/typescript/bin/tsc -p tsconfig.json && cd lib && npm init -y && npm install bcrypt --save --target=6.1.0 --target_arch=x64 --target_platform=linux --target_libc=glibc
+```
+
+This functions calls tsc and then npm installs into the lib folder (you need to npm init first). Then we install bcrypt with the flag that will download the binary which is compatible with the AWS linux runtime, not the binary compatible with your personal computer.
+
+
+### Get setup
 
 To run the example first setup your [AWS Credentials](http://apex.run/#aws-credentials).
-
-Add profile to the project.json
-
 
 Install NPM dependencies:
 
@@ -15,15 +34,17 @@ Initialize the function role:
 $ apex init
 ```
 
-Add extra options from `project.json_stub` to generated `project.json` to include the runtime, handler and hook  options.
+Add extra options from `project.json_stub` to generated `project.json` to include the runtime, handler and hook options.
 
-Deploy the functions:
+Add profile to `project.json`
+
+*Deploy the functions:*
 
 ```
 $ apex deploy
 ```
 
-Try it out:
+*Try it out:*
 
 ```
 $ apex invoke axios
@@ -37,3 +58,6 @@ $ apex invoke hello-one
 $ apex invoke lodash-upper
 ```
 
+```
+$ apex invoke bcrypt
+```
