@@ -37,7 +37,9 @@ $ apex init
 
 Add extra options from `project.json_stub` to generated `project.json` to include the runtime, handler and hook options.
 
-Add profile to `project.json`
+Add profile to `project.json` so your local settings dont get forgotten.
+
+Feel free to delete the .js file created in the hello folder by apex init. The .ts file is the file that will actually be deployed.
 
 *Deploy the functions:*
 
