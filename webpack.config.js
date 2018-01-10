@@ -5,6 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     entry: './src/index.ts',
     target: 'node',
+    externals: ['aws-sdk', 'bcrypt'],
     output: {
         path: path.join(process.cwd(), 'lib'),
         filename: 'index.js',
@@ -25,6 +26,6 @@ module.exports = {
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new UglifyJsPlugin(),
+        // new UglifyJsPlugin(),
     ]
 };
