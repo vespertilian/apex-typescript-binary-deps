@@ -1,9 +1,4 @@
 {
-  "name": "apex-typescript-binary-deps",
-  "description": "Example repository with typescript and binary dependencies",
-  "memory": 128,
-  "timeout": 5,
-  "environment": {},
   "runtime": "nodejs6.10",
   "handler": "lib/index.default",
   "hooks": {
