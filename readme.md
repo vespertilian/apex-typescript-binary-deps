@@ -1,4 +1,4 @@
-## Example of a complex typescript build for when using Apex to deploy lambda functions.
+## Example of a complex typescript build for Apex lambda function deployment.
 
 ### Overview of build architecture
 
@@ -10,13 +10,13 @@ These functions are built with webpack which will bundle all all the dependencie
 
 - *bcrypt*
 
-As bcrypt relies on a c binary we need to bundle it with it's node modules. The `function.json` and `tsconfig.json` files inside the bcrypt function folder are used to override the default webpack bundle used for the other simpler functions.
+As bcrypt relies on a c binary we need to bundle it with it's node modules. The `function.json` and `tsconfig.json` files inside the bcrypt function folder are used to override the default webpack bundle used for the other functions which don't have binary files.
 
 ```
 ../../node_modules/typescript/bin/tsc -p tsconfig.json && cd lib && npm init -y && npm install bcrypt --save --target=6.1.0 --target_arch=x64 --target_platform=linux --target_libc=glibc
 ```
 
-This functions calls tsc and then npm installs into the lib folder (you need to npm init first). Then we install bcrypt with the flag that will download the binary which is compatible with the AWS linux runtime, not the binary compatible with your personal computer.
+This functions calls tsc and then npm installs into the lib folder (you need to npm init first). Then we install bcrypt with the flag that will download a binary which is compatible with the AWS linux runtime. Without these flags the binary compatible with your personal computer would be installed.
 
 
 ### Get setup
