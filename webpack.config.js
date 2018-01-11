@@ -26,6 +26,6 @@ module.exports = {
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        // new UglifyJsPlugin(),
+        new UglifyJsPlugin(),
     ]
 };
