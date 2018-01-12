@@ -6,19 +6,23 @@
 - *hello-one*
 - *lodash-upper*
 
-These functions are built with webpack which will bundle all all the dependencies into a single file. The webpack build hook is set in the `project-stub.json` file. See webpack.config.js for webpack settings.
+These functions are built with webpack which will bundle all all the dependencies into a single file. The webpack build hook is set in the `project-stub.json` file. See `webpack.config.js` for webpack settings.
+
+Note in `webpack.config` the externals option prevents libraries being bundled in the code. You don't need to bundle `aws-sdk` as this is provided in lambda by default.
 
 - *bcrypt*
 
-As bcrypt relies on a c binary we need to bundle it with it's node modules. The `function.json` and `tsconfig.json` files inside the bcrypt function folder are used to override the default webpack bundle used for the other functions which don't have binary files.
+As bcrypt relies on a c binary we need to bundle it with it's node modules. The `function.json` file inside the bcrypt function folder is used to override the default webpack bundle used for the other functions which don't have binary files.
 
 Build command override in `functions\bcrypt\function.json`:
 
 ```
-../../node_modules/typescript/bin/tsc -p tsconfig.json && cd lib && npm init -y && npm install bcrypt --save --target=6.1.0 --target_arch=x64 --target_platform=linux --target_libc=glibc
+    "../../node_modules/.bin/webpack --config ../../webpack.config.js && cd lib && npm init -y && npm install bcrypt --save --target=6.1.0 --target_arch=x64 --target_platform=linux --target_libc=glibc"
 ```
 
-This functions calls tsc (the typescript compiler), then npm init. Then it npm installs bcrypt with flags that will download a binary which is compatible with the AWS linux runtime. Without these flags the binary will be compatible with your personal computer not lambda.
+This functions calls webpack with the webpack config file, then npm init. Then it npm installs bcrypt with flags that will download a binary which is compatible with the AWS linux runtime. Without these flags the binary will be compatible with your personal computer not lambda.
+
+Note in `webpack.config` the externals option prevents libraries being bundled in the code. You don't need to bundle `bcrypt` as we are installing it with when we run the build command.
 
 ### Get setup
 

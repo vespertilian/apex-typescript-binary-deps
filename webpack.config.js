@@ -5,6 +5,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     entry: './src/index.ts',
     target: 'node',
+    externals: ['aws-sdk', 'bcrypt'],
     output: {
         path: path.join(process.cwd(), 'lib'),
         filename: 'index.js',
