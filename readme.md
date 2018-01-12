@@ -1,5 +1,7 @@
 ## Example of a complex typescript build for Apex lambda function deployment.
 
+This project relies on [Apex](http://apex.run/).
+
 ### Overview of build architecture
 
 - *axios*
