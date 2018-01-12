@@ -22,7 +22,7 @@ Build command override in `functions\bcrypt\function.json`:
 
 This functions calls webpack with the webpack config file, then npm init. Then it npm installs bcrypt with flags that will download a binary which is compatible with the AWS linux runtime. Without these flags the binary will be compatible with your personal computer not lambda.
 
-Note in `webpack.config` the externals option prevents libraries being bundled in the code. You don't need to bundle `bcrypt` as we are installing it with when we run the build command.
+Note in `webpack.config` the externals option prevents libraries being bundled in the code. You don't need to bundle `bcrypt` as we are installing it when we run the build command. It will be available in a node_modules folder inside the lib folder created.
 
 ### Get setup
 
