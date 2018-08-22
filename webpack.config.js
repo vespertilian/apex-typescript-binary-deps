@@ -1,8 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
+// see settings for production mode here
+// https://webpack.js.org/concepts/mode/
 
 module.exports = {
+    mode: 'production',
     entry: './src/index.ts',
     target: 'node',
     externals: ['aws-sdk', 'bcrypt'],
@@ -22,10 +24,5 @@ module.exports = {
     },
     resolve: {
         extensions: [ '.ts', '.js' ]
-    },
-    plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.optimize.ModuleConcatenationPlugin(),
-        new UglifyJsPlugin(),
-    ]
+    }
 };
